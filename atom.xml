@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>ReDBox Distribution Documentation</title>
+	<link href="http://redbox-mint.github.io/redbox-build-distro/atom.xml" rel="self"/>
+	<link href="http://redbox-mint.github.io/redbox-build-distro"/>
+	<updated>2015-12-08T02:07:31.170Z</updated>
+	<id>http://redbox-mint.github.io/redbox-build-distro</id>
+	<author>
+		<name>Queensland Cyber Infrastructure Foundation</name>
+		<email>your@email.com</email>
+	</author>
+
+	
+</feed>

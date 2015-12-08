@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<!-- Use the .htaccess and remove these lines to avoid edge case issues.
+		 More info: h5bp.com/i/378 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Our site title and description -->
+	<title>Harvesting data | ReDBox Distribution Documentation</title>
+	<meta name="description" content="Documentation associated with the ReDBox application" />
+	<meta name="keywords" content="place, your, website, keywoards, here, keep, them, related, to, the, content, of, your, website" />
+	<meta name="author" content="Queensland Cyber Infrastructure Foundation" />
+
+	<!-- Output DocPad produced meta elements -->
+	<meta name="generator" content="DocPad v6.69.1" />
+
+	<!-- Mobile viewport optimized: h5bp.com/viewport -->
+	<meta name="viewport" content="width=device-width" />
+
+	<!-- Icons -->
+		<link rel="shortcut icon" href="http://redbox-mint.github.io/redbox-build-distroimages/icons/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://redbox-mint.github.io/redbox-build-distro/images/icons/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://redbox-mint.github.io/redbox-build-distro/images/icons/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://redbox-mint.github.io/redbox-build-distro/images/icons/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="http://redbox-mint.github.io/redbox-build-distro/images/icons/apple-touch-icon-57-precomposed.png">
+
+	<!-- Shims: IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	
+	
+		<link  rel="stylesheet" href="http://redbox-mint.github.io/redbox-build-distro/styles/twitter-bootstrap.css" />
+	
+	   
+	
+	
+		<link  rel="stylesheet" href="http://redbox-mint.github.io/redbox-build-distro/styles/style.css" />
+	
+	   
+	
+</head>
+<body>
+	<!-- Menu -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://redbox-mint.github.io/redbox-build-distro">Home</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					
+						<li
+							typeof="sioc:Page"
+							about="/pages/installation"
+							class=""
+						>
+							<a href="http://redbox-mint.github.io/redbox-build-distro/pages/installation" property="dc:title">
+								Installation Guide
+							</a>
+						</li>
+						<li
+							typeof="sioc:Page"
+							about="/pages/configurationGuides.html"
+							class=""
+						>
+							<a href="http://redbox-mint.github.io/redbox-build-distro/pages/configguides" property="dc:title">
+								Configuration Guides
+							</a>
+						</li>
+					
+				</ul>
+			</div><!--/.navbar-collapse -->
+		</div>
+	</div>
+
+	<!-- Content -->
+	<div class="container">
+		<!-- Content -->
+		<section id="content" class="content">
+			<article id="page" class="page">
+	<h1>Harvesting data</h1>
+	<div class="page-content"><p>A key feature of ReDBox and Mint is the ability to harvest records from external sources. This functionality is delivered by the <a href="harvesterTool">ReDBox Harvester tool</a> and is capable of consuming data from a variety of sources (such as a relational database and message queue). The most common method used is to harvest CSV files from the file system. With the addition of the <a href="adminInterface">Administration Interface</a> in ReDBox 1.8, the ability to submit the CSV files via a user interface or a REST API is also possible.</p>
+<h2 id="harvesting-in-mint">Harvesting in Mint</h2>
+<p>The default configuration for the Mint harvester is to monitor a directory on the file system and to process the CSV files that are placed there.</p>
+<h3 id="business-rules">Business Rules</h3>
+<h4 id="csv-format">CSV Format</h4>
+<p>CSV files should adhere to the <a href="http://tools.ietf.org/html/rfc4180">RFC4180</a> standard</p>
+<h4 id="csv-filename">CSV Filename</h4>
+<p>The harvester utilises the CSV filename to determine the type of record by the filename. For example, to harvest party records, the filename must be Party_People.csv. Any other filename will cause the harvester to fail as the record type will not be recognised. The filenames required or each record type is outlined below in the record details section.</p>
+<h4 id="adding-and-updating-records">Adding and updating records</h4>
+<p>The Mint harvester requires utilises an identifier column to identify whether a record already exists in storage and requires updating or is new and requires adding. As this is column is being used an identifier, there is a requirement that each record is unique. The field can be a string of any format though numeric identifiers are often used.</p>
+<h4 id="deleting-a-record">Deleting a record</h4>
+<p>You <em><strong>cannot</strong></em> delete a record in Mint via the CSV harvest. This rule is implemented for the following reasons:</p>
+<ul>
+<li>In some situations, the data feed from the central system (source of truth) is not reliable and records go &quot;missing&quot;. For example, the HR system or research management system may not publish information about staff that left.</li>
+<li>Mint often creates additional metadata as part of the curation model (see <a href="http://www.redboxresearchdata.com.au/documentation/system-overview/curating-linked-data">Curating Linked Data</a>) and this would be lost if you delete the record. For example, the person has an NLA identifier and links to a ReDBox record</li>
+<li>There&#39;s a hidden benefit - your CSV file needs only contain records that require updating/inserting.</li>
+</ul>
+<p>As Mint is in charge of publishing records to services (such as the National Libraries Australia and Research Data Australia), it isn&#39;t appropriate for these records to just disappear. Once they&#39;re in Mint they need to be treated with curatorial gloves.
+It is however possible to delete a record via the Mint user interface by logging in as an administrator. This is of course strongly discouraged and you must make sure that you aren&#39;t breaking any relationships with other objects (in Mint or ReDBox) or feeds to other services.</p>
+<h3 id="record-types">Record types</h3>
+<h4 id="parties">Parties</h4>
+<p>Parties data is used to record researcher information.</p>
+<p><strong>Information:</strong></p>
+<ul>
+<li><strong>Filename</strong> - Parties_People.csv</li>
+<li><strong>Demonstration</strong> - <a href="http://demo.redboxresearchdata.com.au/mint/Parties_People/search">http://demo.redboxresearchdata.com.au/mint/Parties_People/search</a></li>
+<li><strong>Sample data file</strong> - <a href="https://qcifltd.atlassian.net/wiki/download/attachments/15433763/Parties_People.csv?version=1&amp;modificationDate=1403146090062&amp;api=v2">Parties_People.csv</a></li>
+<li><strong>See also </strong> - <a href="http://ands.org.au/guides/cpguide/cpgparty-bestpractice.html">http://ands.org.au/guides/cpguide/cpgparty-bestpractice.html</a></li>
+</ul>
+<p><strong>CSV Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory</th>
+<th>Field name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>ID</td>
+<td>The institution&#39;s ID - likely to be a staff, student or researcher ID</td>
+<td>00007429</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Given_Name</td>
+<td>The first given name</td>
+<td>Michael</td>
+</tr>
+<tr>
+<td></td>
+<td>Other_Names</td>
+<td>Any intermediary (middle) names</td>
+<td>Alfred</td>
+</tr>
+<tr>
+<td></td>
+<td>Family_Name</td>
+<td>Often referred to as surname</td>
+<td>Jones</td>
+</tr>
+<tr>
+<td></td>
+<td>Pref_Name</td>
+<td>The preferred name, usually a single name</td>
+<td>Mick</td>
+</tr>
+<tr>
+<td></td>
+<td>Honorific</td>
+<td>A name prefix</td>
+<td>Mrs, Dr, Prof</td>
+</tr>
+<tr>
+<td></td>
+<td>Email</td>
+<td>The person&#39;s email address</td>
+<td>mick@staff.edu.au</td>
+</tr>
+<tr>
+<td></td>
+<td>Job_Title</td>
+<td>The primary job title for the person</td>
+<td>Facility Director</td>
+</tr>
+<tr>
+<td></td>
+<td>GroupID_1</td>
+<td>Links to Party (Group) records. This needs to match an ID in the Parties-Group CSV</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>GroupID_2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>GroupID_3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ANZSRC_FOR_1</td>
+<td>The 2, 4 or 6 digit Field of Research code as designated by the Australian Bureau of Statistics under ANZSRC (2008)</td>
+<td>04, 0101, 070201</td>
+</tr>
+<tr>
+<td></td>
+<td>ANZSRC_FOR_2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ANZSRC_FOR_3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>NLA_Party_Identifier</td>
+<td>A National Library of Australia party identifier</td>
+<td><a href="http://nla.gov.au/nla.party-461793">http://nla.gov.au/nla.party-461793</a></td>
+</tr>
+<tr>
+<td></td>
+<td>ResearcherID</td>
+<td>A Thomson Reuters ID created using the <a href="http://www.researchid.com">http://www.researchid.com</a> service</td>
+<td><a href="http://www.researcherid.com/rid/F-3500-2011">http://www.researcherid.com/rid/F-3500-2011</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Personal_Homepage</td>
+<td>The researcher&#39;s personal website</td>
+<td><a href="http://www.me.example.com/">http://www.me.example.com/</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Staff_Profile_Homepage</td>
+<td>The researcher&#39;s webpage within the institutional web presence</td>
+<td><a href="http://staffprofiles.edu.au/mjones">http://staffprofiles.edu.au/mjones</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Description</td>
+<td>A brief bio or overview of the researcher</td>
+<td>Mike has been investigating the effects of loud noises.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="groups">Groups</h4>
+<p>Groups are any organisational unit that relates to research. This could be formal groups such as faculties or informal such as an arts collective.
+Typically, this data is provided in a hierarchical model. For example, the University is named as the top-level group with faculties and institutes below and then schools below them:
+<img src="../../images/harvesting/Sample Parties-Groups org chart.png" alt=""></p>
+<p><strong>Information:</strong></p>
+<ul>
+<li><strong>Filename</strong> - Parties_Groups.csv</li>
+<li><strong>Demonstration</strong> - <a href="http://demo.redboxresearchdata.com.au/mint/Parties_Groups/search">http://demo.redboxresearchdata.com.au/mint/Parties_Groups/search</a></li>
+<li><strong>Sample data file</strong> - <a href="https://qcifltd.atlassian.net/wiki/download/attachments/15433763/Parties_Groups.csv?version=1&amp;modificationDate=1403146163400&amp;api=v2">Parties_Groups.csv</a></li>
+<li><strong>See also </strong> - <a href="http://ands.org.au/guides/cpguide/cpgparty-bestpractice.html">http://ands.org.au/guides/cpguide/cpgparty-bestpractice.html</a></li>
+</ul>
+<p><strong>CSV Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory</th>
+<th>Field name</th>
+<th>Description</th>
+<th>Note</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>ID</td>
+<td>An identifier for the group</td>
+<td>This is linked to via the GroupID_1 field in the Party data or the Parent_Group_ID field in the Groups data</td>
+<td>FoS</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Name</td>
+<td>The name of the group</td>
+<td></td>
+<td>Faculty of Science</td>
+</tr>
+<tr>
+<td></td>
+<td>Email</td>
+<td>A contact email address for the group</td>
+<td></td>
+<td>fos@uni.edu.au</td>
+</tr>
+<tr>
+<td></td>
+<td>Phone</td>
+<td>A phone number for contacting the group</td>
+<td></td>
+<td>07 3456 7654</td>
+</tr>
+<tr>
+<td></td>
+<td>Parent_Group_ID</td>
+<td></td>
+<td>Link to the parent group</td>
+<td>UoE</td>
+</tr>
+<tr>
+<td></td>
+<td>Homepage</td>
+<td>The group&#39;s website</td>
+<td></td>
+<td><a href="http://www.fos.uni.edu.au/">http://www.fos.uni.edu.au/</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Description</td>
+<td>A brief description of the group</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="activities">Activities</h4>
+<p>Activities data is used to record research activities that are not funded via the ARC or the NHMRC.</p>
+<p><strong>Information:</strong></p>
+<ul>
+<li><strong>Filename</strong> - Activities.csv</li>
+<li><strong>Demonstration</strong> - <a href="http://demo.redboxresearchdata.com.au/mint/Activities/search">http://demo.redboxresearchdata.com.au/mint/Activities/search</a></li>
+<li><strong>Sample data file</strong> - <a href="https://qcifltd.atlassian.net/wiki/download/attachments/15433763/Activities.csv?version=1&amp;modificationDate=1403146198355&amp;api=v2">Activities.csv</a></li>
+<li><strong>See also </strong> - <a href="http://ands.org.au/guides/cpguide/cpgparty-bestpractice.html">http://ands.org.au/guides/cpguide/cpgparty-bestpractice.html</a></li>
+</ul>
+<p><strong>CSV Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory</th>
+<th>Field name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>ID</td>
+<td>An identifier for the activity</td>
+</tr>
+<tr>
+<td></td>
+<td>Title</td>
+<td>The title of the activity</td>
+</tr>
+<tr>
+<td></td>
+<td>Name</td>
+<td>The name of the activity</td>
+</tr>
+<tr>
+<td></td>
+<td>Type</td>
+<td>The type of activity as described by the  <a href="http://ands.org.au/guides/cpguide/cpgactivity.html#sourcing">ANDS Content Providers Guide</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Existence_Start</td>
+<td>The year in which the activity started</td>
+</tr>
+<tr>
+<td></td>
+<td>Existence_End</td>
+<td>The year in which the activity completed</td>
+</tr>
+<tr>
+<td></td>
+<td>Description</td>
+<td>A description of the activity</td>
+</tr>
+<tr>
+<td></td>
+<td>Primary_Investigator_ID</td>
+<td>The ID of the PI (links to the Parties-People data)</td>
+</tr>
+<tr>
+<td></td>
+<td>Investigators</td>
+<td>A semi-colon (;) separated list of IDs for other researchers related to the activity. These IDs must match records in the Parties-People data</td>
+</tr>
+<tr>
+<td></td>
+<td>Website</td>
+<td>A website for the activity</td>
+</tr>
+<tr>
+<td></td>
+<td>ANZSRC_FOR_1</td>
+<td>The 2, 4 or 6 digit Field of Research code as designated by the Australian Bureau of Statistics under ANZSRC (2008)</td>
+</tr>
+<tr>
+<td></td>
+<td>ANZSRC_FOR_2</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ANZSRC_FOR_3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pre-loaded-data">Pre-loaded data</h3>
+<p>As well as the following data sets that contain institution specific there are other vocabularies that Mint stores. These are either:</p>
+<ul>
+<li>Standard vocabularies used by the ReDBox to enhance it&#39;s forms (e.g. language codes)</li>
+<li>National standardised data that is relevant for all Australian institutions (e.g. ARC and NHMRC grant data)</li>
+</ul>
+<p>The complete list of data pre-loaded is as follows:</p>
+<ol>
+<li>ANZSRC FOR and SEO codes</li>
+<li>Language codes</li>
+<li>Geo-spatial information (used by the map widget)</li>
+<li>MARC Country codes</li>
+<li>ARC and NHMRC Grant data</li>
+</ol>
+</div>
+</article>
+		</section>
+
+		<!-- Footer -->
+		<footer>
+			<p class="pull-left">&copy; Queensland Cyber Infrastructure Foundation 2015</p>
+			<p class="pull-right">
+				This website was last updated at 2015-12-08T02:07:31.170Z
+			</p>
+		</footer>
+	</div><!-- /container -->
+
+	<!-- Scripts -->
+	
+	 
+	<script defer="defer"  src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+	   
+	
+	 
+	<script defer="defer"  src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>	
+	   
+	
+	
+		<script defer="defer"  src="http://redbox-mint.github.io/redbox-build-distro/vendor/twitter-bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	   
+	
+	
+		<script defer="defer"  src="http://redbox-mint.github.io/redbox-build-distro/scripts/script.js"></script>
+	
+	   
+	
+	
+</body>
+</html>
