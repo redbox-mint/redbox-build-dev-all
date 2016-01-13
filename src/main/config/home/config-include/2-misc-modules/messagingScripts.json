@@ -1,0 +1,25 @@
+{
+    "messaging": {
+        "threads": [
+            {
+                "id": "messagingScripts",
+                "description": "Allows customisable message queues based on 'destinations' configuration below.",
+                "priority": "7",
+                "config": {
+                    "name": "messagingScripts",
+                    "destinations": [
+                        {
+                            "name": "testQueue",
+                            "type": "queue",
+                            "scriptPath": "home/scripts/messaging/test.groovy",
+                            "scriptEngine":"groovy",
+                            "scriptConfig": {
+                                "arbitraryConfigPath": "is this"
+                            }
+                        }
+                    ]
+                }
+            } 
+        ]
+    }
+}
