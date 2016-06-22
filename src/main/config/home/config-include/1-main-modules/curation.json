@@ -5,7 +5,7 @@
         "pidProperty": "localPid",
         "pidType": "local",
         "mintBroker": "${mint.amq.broker}",
-        "curation-manager-url":"http://localhost:8080/CurationManager/curationManager",
+        "curation-manager-url":"http://localhost:8080/v-0.1",
         "supported-types":{ "dataset":"redbox","person":"mint","group":"mint"}, 
         "identifier-pids":{"local":"localPid","handle":"handlePid"},
         "external-system-urls": {
@@ -14,7 +14,13 @@
         		 },
         		 "publish":{
         		 	"mint":"${mint.proxy.url}/default/api/publish.script?apiKey=1412412412241"
-        		 }
+        		 },
+				 "notify-curation":{
+					"mint":"${mint.proxy.url}/default/api/notifyCuration.script?apiKey=1412412412241"
+				 },
+				 "get-oid-for-identifier":{
+					"mint":"${mint.proxy.url}/default/api/getOidForIdentifier.script?apiKey=1412412412241"					
+				 }
         },
         "relations": {
             "dc:relation.vivo:Dataset.0.dc:identifier": {
