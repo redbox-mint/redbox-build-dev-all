@@ -3,7 +3,7 @@ from java.util import Date, HashMap, ArrayList
 from java.lang import String, Integer, Long
 from java.security import SecureRandom
 from java.net import URLDecoder, URLEncoder
-from java.io import File
+from java.io import File,ByteArrayInputStream
 from com.googlecode.fascinator.common.storage import StorageUtils
 from com.googlecode.fascinator.spring import ApplicationContextProvider
 from com.googlecode.fascinator.common import BasicHttpClient
@@ -85,7 +85,7 @@ class CurationData():
             
         for jobItem in jobItems:
             type = jobItem.get("type");
-            targetSystem = systemConfig.getString(null, "curation", "supported-types", type);
+            targetSystem = self.systemConfig.getString(None, "curation", "supported-types", type);
             if targetSystem == "redbox":
                 oid = jobItem.get("oid")
                 digitalObject = StorageUtils.getDigitalObject(self.services.getStorage(), oid)
@@ -97,9 +97,9 @@ class CurationData():
                 relationships = metadataJson.getArray("relationships")
                 if relationships is not None:
                     for relationship in relationships:
-                        if relationship.get("system") != "redbox" or relationship.get("system") != None:
-                            url = self.systemConfig.getString(None, "curation","external-system-urls","notify-curation",system)
-                            
+			system = relationship.get("system")
+                        if system != "redbox" or system != None:
+			    url = self.systemConfig.getString("can't find it", "curation","external-system-urls","get-oid-for-identifier",system)
                             client = BasicHttpClient(url+ "&identifier="+relationship.get("identifier"))
                             get = GetMethod(url+ "&identifier="+relationship.get("identifier"))
                             client.executeMethod(get)
