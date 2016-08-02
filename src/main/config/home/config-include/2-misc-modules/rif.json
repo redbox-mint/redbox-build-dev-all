@@ -1,0 +1,8 @@
+{
+    "rifcs": {
+        "recordAsLocation": {
+            "template": "${urlBase}detail/${oid}",
+            "default": true
+        }
+    }
+}
