@@ -1,7 +1,7 @@
 {
     "rifcs": {
         "recordAsLocation": {
-            "template": "${urlBase}detail/${oid}",
+            "template": "${urlBase}published/detail/${oid}",
             "default": true
         }
     }
