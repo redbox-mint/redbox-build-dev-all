@@ -10,7 +10,7 @@ before_install:
 install: true
 script: true
 after_success:
-- docker run -v /tmp/build:/build -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD"
+- travis_wait 30 docker run -v /tmp/build:/build -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD"
   qcifengineering/redbox-builder /bin/bash -c "cd build/src;mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn --settings /m2_repo/travis-settings.xml
   -Dmaven.repo.local=/m2_repo -DskipTests=true -Pbuild-package deploy | grep -v 'Download.*' | grep -v 'CHECKSUM.*'| grep -v 'downloaded.*' | grep -v 'Copying.*'| grep -v '\[INFO\].*'"
 env:
