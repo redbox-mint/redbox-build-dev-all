@@ -6,8 +6,7 @@ before_install:
 - mkdir /tmp/build
 - docker pull qcifengineering/redbox-builder
 - docker run -v /tmp/build:/build -e "CLONEPATH=--branch=rifcs161 https://github.com/redbox-mint/redbox-build-distro.git" -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD"
-  qcifengineering/redbox-builder /bin/bash -c "cd build;git clone $CLONEPATH src; cd src;mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn --settings /m2_repo/travis-settings.xml
-  -Dmaven.repo.local=/m2_repo -DskipTests=true -Pbuild-package deploy"
+  qcifengineering/redbox-builder /bin/bash -c "cd build;git clone $CLONEPATH src; cd src; mvn -Dmaven.repo.local=/m2_repo --settings /m2_repo/travis-settings.xml -DskipTests=true -Pbuild-package clean package deploy
 install: true
 script: true
 env:
