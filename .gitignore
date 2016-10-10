@@ -5,6 +5,7 @@ target/
 /.pydevproject
 *.iml
 .DS_Store
+
 /logs/
 .idea/
 logs/
