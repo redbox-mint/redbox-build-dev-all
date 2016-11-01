@@ -2,7 +2,7 @@
     "rifcs": {
         "recordAsLocation": {
             "template": "${urlBase}published/detail/${oid}",
-            "default": true
+            "default": false
         }
     }
 }
