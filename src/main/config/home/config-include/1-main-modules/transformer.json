@@ -4,10 +4,16 @@
             "id": "local",
             "useIncrements": false
         },
+        "rifcs": {
+            "id": "scripting",
+            "scriptType": "groovy",
+            "scriptPath": "${fascinator.home}/scripts/tfpackageToRifcs.groovy"
+        },
         "jsonVelocity": {
             "id": "jsonVelocity",
             "sourcePayload": ".tfpackage",
-            "templatesPath": "${fascinator.home}/templates"
+            "templatesPath": "${fascinator.home}/templates",
+            "templatesPathExclusions": ["rif.vm"]
         },
         "jsonVelocityPDF": {
             "id": "jsonVelocityPDF",
