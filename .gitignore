@@ -8,6 +8,7 @@ target/
 .DS_Store
 
 /logs/
+
 .idea/
 logs/
 system-config-result.json
