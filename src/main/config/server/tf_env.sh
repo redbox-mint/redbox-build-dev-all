@@ -60,10 +60,10 @@ fi
 JETTY_OPTS="-Djetty.port=$LOCAL_PORT -Djetty.logs=$JETTY_LOGS -Djetty.home=$PROJECT_HOME/server/jetty"
 
 # solr settings
-SOLR_OPTS="-Dsolr.solr.home=$PROJECT_HOME/solr"
+SOLR_OPTS="-Dsolr.solr.home=$PROJECT_HOME/data/solr"
 
 # directories
-CONFIG_DIRS="-Dfascinator.home=$TF_HOME -Dportal.home=$PROJECT_HOME/portal -Dstorage.home=$PROJECT_HOME/storage"
+CONFIG_DIRS="-Dproject.home=$PROJECT_HOME -Dproject.data=$PROJECT_HOME/data -Dfascinator.home=$TF_HOME -Dportal.home=$PROJECT_HOME/portal -Dstorage.home=$PROJECT_HOME/data/storage -Dderby.system.home=$PROJECT_HOME/data/database"
 
 # mint integration
 MINT_OPTS="-Dmint.proxy.server=$MINT_SERVER -Dmint.proxy.url=$MINT_SERVER/mint -Dmint.amq.broker=$MINT_AMQ"

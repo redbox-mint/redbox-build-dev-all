@@ -3,16 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.googlecode.redbox-mint</groupId>
 	<artifactId>redbox-distro</artifactId>
-	<version>1.9-SNAPSHOT</version>
+	<version>1.9.0.1-SNAPSHOT</version>
 	<packaging>${packaging}</packaging>
 	<name>ReDBox - Distribution</name>
 	<parent>
 		<groupId>com.googlecode.redbox-mint</groupId>
 		<artifactId>redbox</artifactId>
-		<version>1.9-SNAPSHOT</version>
+		<version>1.9.0.1-SNAPSHOT</version>
 	</parent>
 	<properties>
 		<!-- Used in build -->
+		<parent.redbox.version>1.9.0.1-SNAPSHOT</parent.redbox.version>
 		<redbox.version>1.9-SNAPSHOT</redbox.version>
 		<package.finalname>${project.build.finalName}</package.finalname>
 		<!-- Runtime values, will replace placeholders in config and control scripts -->
@@ -27,8 +28,8 @@
 		<dir.home>${project.home}/home</dir.home>
 		<dir.portal>${project.home}/portal</dir.portal>
 		<dir.server>${project.home}/server</dir.server>
-		<dir.solr>${project.home}/solr</dir.solr>
-		<dir.storage>${project.home}/storage</dir.storage>
+		<dir.solr>${project.home}/data/solr</dir.solr>
+		<dir.storage>${project.home}/data/storage</dir.storage>
 		<smtp.host>localhost</smtp.host>
 		<admin.email>admin@localhost</admin.email>
 		<packaging>pom</packaging>
@@ -50,7 +51,7 @@
 			<groupId>com.googlecode.redbox-mint</groupId>
 			<artifactId>redbox</artifactId>
 			<type>pom</type>
-			<version>${redbox.version}</version>
+			<version>${parent.redbox.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.redbox-mint</groupId>
@@ -67,6 +68,11 @@
 			<artifactId>plugin-transaction-external-curation</artifactId>
 			<version>1.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+            <groupId>com.googlecode.redbox-mint</groupId>
+            <artifactId>plugin-transaction-curation-redbox</artifactId>
+            <version>${redbox.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>com.googlecode.the-fascinator.plugins</groupId>
 			<artifactId>plugin-storage-filesystem</artifactId>
@@ -524,7 +530,7 @@
 							<goal>unpack</goal>
 						</goals>
 						<configuration>
-							<includes>home/**,portal/**,server/**,solr/**</includes>
+							<includes>home/**,portal/**,server/**</includes>
 							<outputDirectory>${project.home}</outputDirectory>
 							<artifactItems>
 								<artifactItem>
@@ -534,6 +540,42 @@
 							</artifactItems>
 						</configuration>
 					</execution>
+					<!--  SOLR unpack to the data directory -->
+					<execution>
+                        <id>unpack-solr</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <includes>solr/**</includes>
+                            <outputDirectory>${project.home}/data</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.googlecode.the-fascinator.plugins</groupId>
+                                    <artifactId>plugin-indexer-solr</artifactId>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <!--  Copy ReDBox's user config -->
+                    <execution>
+                        <id>unpack-internal-sec</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <includes>data/security**</includes>
+                            <outputDirectory>${project.home}/data/</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.googlecode.redbox-mint</groupId>
+                                    <artifactId>redbox</artifactId>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
 					<!-- RapidAAF Resources -->
 					<execution>
 						<id>unpack-rapidaaf-conf</id>
