@@ -2,7 +2,7 @@
 	"messaging": {
         "url": "tcp://localhost:${amq.port}",
         "stompUrl": "stomp://localhost:${amq.stomp.port}",
-        "home": "${fascinator.home}/activemq-data",
+        "home": "${project.data}/activemq-data",
         "startup": {
             "delay": "5000",
             "timer": "15000"

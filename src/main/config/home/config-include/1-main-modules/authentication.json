@@ -2,7 +2,7 @@
 	"authentication": {
         "plugins": ["internal"],
         "internal": {
-            "path": "${fascinator.home}/security/users.properties"
+            "path": "${project.data}/security/users.properties"
         }
     }
 }

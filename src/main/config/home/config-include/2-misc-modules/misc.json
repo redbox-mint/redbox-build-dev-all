@@ -3,7 +3,7 @@
         "tfpackage": "application/x-fascinator-package"
     },
     "database-service": {
-        "derbyHome": "${fascinator.home}/database"
+        "derbyHome": "${project.data}/database"
     },                
     "watcher": {
         "path": "${watcher.home}"
