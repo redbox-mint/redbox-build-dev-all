@@ -13,7 +13,7 @@
       <includes>
         <include>home/**</include>
         <include>portal/**</include>
-        <include>solr/**</include>
+        <include>data/**</include>
         <include>server/**</include>
       </includes>
       <excludes>
