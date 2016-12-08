@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>com.googlecode.redbox-mint</groupId>
 			<artifactId>redbox-config</artifactId>
-			<version>${redbox.version}</version>
+			<version>1.10-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.redbox-mint</groupId>
@@ -524,7 +524,7 @@
 							<goal>unpack</goal>
 						</goals>
 						<configuration>
-							<includes>home/**,portal/**,server/**,solr/**</includes>
+							<includes>home/**,portal/**,server/**,solr/**,data/**</includes>
 							<outputDirectory>${project.home}</outputDirectory>
 							<artifactItems>
 								<artifactItem>
