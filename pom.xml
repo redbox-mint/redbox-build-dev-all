@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.googlecode.redbox-mint</groupId>
 	<artifactId>redbox-distro</artifactId>
-	<version>1.10-SNAPSHOT</version>
+	<version>1.9.0.1-SNAPSHOT</version>
 	<packaging>${packaging}</packaging>
 	<name>ReDBox - Distribution</name>
 	<parent>
@@ -234,9 +234,14 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
+			<groupId>com.googlecode.redbox-mint</groupId>
+			<artifactId>plugin-transaction-curation-redbox</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<dependency>
 			<groupId>com.googlecode.the-fascinator</groupId>
 			<artifactId>fascinator-portal</artifactId>
-			<version>1.4</version>
+			<version>1.4.1-SNAPSHOT</version>
 			<classifier>classes</classifier>
 			<exclusions>
 				<exclusion>
@@ -284,14 +289,14 @@
           <groupId>com.googlecode.the-fascinator</groupId>
           <artifactId>fascinator-portal</artifactId>
           <type>warpath</type>
-          <version>1.4</version>
+          <version>1.4.1-SNAPSHOT</version>
           <exclusions>
           <exclusion>
           	<groupId>com.sun.jersey</groupId>
           	<artifactId>jersey-server</artifactId>
           </exclusion>
           </exclusions>
-        </dependency>				 
+        </dependency>
 	</dependencies>
 	<profiles>
 		<profile>
