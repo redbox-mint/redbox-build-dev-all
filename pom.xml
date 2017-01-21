@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>com.googlecode.redbox-mint</groupId>
 			<artifactId>redbox-config</artifactId>
-			<version>1.10-SNAPSHOT</version>
+			<version>1.9.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.redbox-mint</groupId>
