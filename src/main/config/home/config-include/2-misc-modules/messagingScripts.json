@@ -9,17 +9,14 @@
                     "name": "messagingScripts",
                     "destinations": [
                         {
-                            "name": "testQueue",
+                            "name": "reindex",
                             "type": "queue",
-                            "scriptPath": "home/scripts/messaging/test.groovy",
-                            "scriptEngine":"groovy",
-                            "scriptConfig": {
-                                "arbitraryConfigPath": "is this"
-                            }
+                            "scriptPath": "${fascinator.home}/scripts/messaging/reindex.groovy",
+                            "scriptEngine":"groovy"
                         }
                     ]
                 }
-            } 
+            }
         ]
     }
 }
