@@ -1,5 +1,5 @@
 {
     "owasp": {
-        "httponly": false
+        "httponly": true
     }
 }
