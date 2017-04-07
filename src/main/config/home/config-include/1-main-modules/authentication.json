@@ -4,5 +4,8 @@
         "internal": {
             "path": "${project.data}/security/users.properties"
         }
-    }
+    },
+		"api":{
+			"apiKeyFile":"${project.data}/security/apiKeys.json"
+		}
 }
