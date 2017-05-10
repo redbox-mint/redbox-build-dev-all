@@ -18,5 +18,5 @@ notifications:
     - http://dev.redboxresearchdata.com.au/hooks/redboxdocker
     on_success: always
     on_failure: never
-    on_cancel: always
+    on_cancel: never
     on_error: never
