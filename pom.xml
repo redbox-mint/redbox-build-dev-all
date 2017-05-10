@@ -355,7 +355,7 @@
 									<followSymlinks>false</followSymlinks>
 								</fileset>
 								<fileset>
-									<directory>../solr</directory>
+									<directory>../data</directory>
 									<includes>
 										<include>**/*</include>
 									</includes>
