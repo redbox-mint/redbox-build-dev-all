@@ -16,3 +16,4 @@ support/scripts/logs/
 support/scripts/config-include/
 support/scripts/backup
 support/scripts/system-config-result.json
+support/docker/*.tar.gz

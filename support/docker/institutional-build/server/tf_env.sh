@@ -2,7 +2,7 @@
 #
 # this script sets the environment for other fascinator scripts
 #
-
+## for docker: SERVER_URL should only be used if specifying a host domain
 export LOCAL_PORT="9000"
 export PROJECT_HOME="/opt/redbox"
 export AMQ_PORT="9101"
@@ -17,7 +17,9 @@ export NON_PROXY_HOSTS="localhost"
 if [ -z "$TF_HOME" ]; then
 	export TF_HOME="$PROJECT_HOME/home"
 fi
-export REDBOX_VERSION="1.9"
+if [ -z "$REDBOX_VERSION" ]; then
+	export REDBOX_VERSION="1.9.0.1-SNAPSHOT"
+fi
 export FASCINATOR_HOME="$TF_HOME"
 
 # java class path
@@ -59,10 +61,10 @@ fi
 JETTY_OPTS="-Djetty.port=$LOCAL_PORT -Djetty.logs=$JETTY_LOGS -Djetty.home=$PROJECT_HOME/server/jetty"
 
 # solr settings
-SOLR_OPTS="-Dsolr.solr.home=$PROJECT_HOME/solr"
+SOLR_OPTS="-Dsolr.solr.home=$PROJECT_HOME/data/solr"
 
 # directories
-CONFIG_DIRS="-Dfascinator.home=$TF_HOME -Dportal.home=$PROJECT_HOME/portal -Dstorage.home=$PROJECT_HOME/storage"
+CONFIG_DIRS="-Dproject.home=$PROJECT_HOME -Dproject.data=$PROJECT_HOME/data -Dfascinator.home=$TF_HOME -Dportal.home=$PROJECT_HOME/portal -Dstorage.home=$PROJECT_HOME/data/storage -Dderby.system.home=$PROJECT_HOME/data/database"
 
 # mint integration
 MINT_OPTS="-Dmint.proxy.server=$MINT_SERVER -Dmint.proxy.url=$MINT_SERVER/mint -Dmint.amq.broker=$MINT_AMQ"
