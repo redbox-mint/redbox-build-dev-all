@@ -16,6 +16,7 @@
         <!-- Used in build for dependencies - use project.version for referencing 'this'-->
         <redbox.version>1.9</redbox.version>
         <package.finalname>${project.build.finalName}</package.finalname>
+        <package.finalname.data>${project.build.finalName}-data</package.finalname.data>
         <!-- Runtime values, will replace placeholders in config and control scripts -->
         <app.location.windows>${project.home}</app.location.windows>
         <app.location.linux>${project.home}</app.location.linux>
@@ -374,6 +375,20 @@
                                     <finalName>${package.finalname}</finalName>
                                     <descriptors>
                                         <descriptor>package.xml</descriptor>
+                                    </descriptors>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>make-assembly-data</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>${classifier.value}</classifier>
+                                    <finalName>${package.finalname.data}</finalName>
+                                    <descriptors>
+                                        <descriptor>package-data.xml</descriptor>
                                     </descriptors>
                                 </configuration>
                             </execution>
