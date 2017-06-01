@@ -433,8 +433,8 @@
                                     <goal>single</goal>
                                 </goals>
                                 <configuration>
-                                    <classifier>${classifier.value}</classifier>
-                                    <finalName>${package.finalname.data}</finalName>
+                                    <classifier>data</classifier>
+                                    <finalName>${package.finalname}</finalName>
                                     <descriptors>
                                         <descriptor>package-data.xml</descriptor>
                                     </descriptors>
