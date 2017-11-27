@@ -1,0 +1,5 @@
+{
+  "api": {
+    "apiKeyFile": "${fascinator.home}/apiKeys.json"
+  }
+}

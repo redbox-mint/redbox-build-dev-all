@@ -1,0 +1,10 @@
+{
+    "api": {
+        "clients": [
+            {
+                "username": "Portal User",
+                "apiKey": "$RB_API_KEY"
+            }
+        ]
+    }
+}

@@ -20,6 +20,7 @@ usage() {
 # [ $# -gt 0 ] || usage
 
 # configure environment
+envsubst < /opt/redbox/apikeys.json.template > /opt/redbox/home/apiKeys.json
 . $PROG_DIR/tf_env.sh
 
 # perform action
