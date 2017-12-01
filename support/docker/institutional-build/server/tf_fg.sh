@@ -19,6 +19,15 @@ usage() {
 # check script arguments
 # [ $# -gt 0 ] || usage
 
+if [ ! -d "/opt/redbox/data/solr" ]; then
+# the solr directory doesn't exist probably due to /opt/redbox/data being mounted to host first time
+# download empty solr directory and place it in the correct location so the application can start correctly
+  curl -L -o solr.tgz "http://dev.redboxresearchdata.com.au/nexus/service/local/artifact/maven/redirect?r=releases&g=au.com.redboxresearchdata&a=redbox-solr-index&v=LATEST&e=tar.gz"
+  tar xvfz solr.tgz -C /opt/redbox/data
+  rm -f solr.tgz
+fi
+
+
 # configure environment
 envsubst < /opt/redbox/apikeys.json.template > /opt/redbox/home/apiKeys.json
 . $PROG_DIR/tf_env.sh
