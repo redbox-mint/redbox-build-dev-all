@@ -5,12 +5,12 @@ services:
 before_install:
 - mkdir /tmp/build
 - docker pull qcifengineering/redbox-builder
-- docker run -v /tmp/build:/build -v $HOME/.m2:/root/.m2 -e "CLONEPATH=https://github.com/redbox-mint/redbox-build-distro.git" qcifengineering/redbox-builder
+- docker run -v /tmp/build:/build -v $HOME/.m2:/root/.m2 -e "CLONEPATH=https://github.com/redbox-mint/redbox-build-distro.git" qcifengineering/redbox-builder /bin/bash "echo '0.0.0.0 static.appfuse.org' >> /etc/hosts; cd build;git clone $CLONEPATH src; cd src; mvn -Dmaven.repo.local=/m2_repo clean package"
 install: true
 cache:
   directories:
   - $HOME/.m2
-script: docker run -v /tmp/build:/build -v $HOME/.m2:/root/.m2 -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD" qcifengineering/redbox-builder /bin/bash -c "echo '0.0.0.0 static.appfuse.org' >> /etc/hosts; cd build/src;mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn --settings /m2_repo/travis-settings.xml -Dmaven.repo.local=/m2_repo -DskipTests=true -Pbuild-package-data deploy | grep -v 'CHECKSUM.*'| grep -v 'downloaded.*' | grep -v 'Copying.*'| grep -v '\[INFO\].*';mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn --settings /m2_repo/travis-settings.xml -Dmaven.repo.local=/m2_repo -DskipTests=true -Pbuild-package deploy | grep -v 'CHECKSUM.*'| grep -v 'downloaded.*' | grep -v 'Copying.*'| grep -v '\[INFO\].*'"
+script: docker run -v /tmp/build:/build -v $HOME/.m2:/root/.m2 -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD" qcifengineering/redbox-builder /bin/bash -c "cd build/src;mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn --settings /m2_repo/travis-settings.xml -Dmaven.repo.local=/m2_repo -DskipTests=true -Pbuild-package-data deploy | grep -v 'CHECKSUM.*'| grep -v 'downloaded.*' | grep -v 'Copying.*'| grep -v '\[INFO\].*';mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn --settings /m2_repo/travis-settings.xml -Dmaven.repo.local=/m2_repo -DskipTests=true -Pbuild-package deploy | grep -v 'CHECKSUM.*'| grep -v 'downloaded.*' | grep -v 'Copying.*'| grep -v '\[INFO\].*'"
 env:
   global:
   - secure: I2TLGAWV7M5IrcTpJPdxwZwrPTZbYNDlXA6Yp50wmEi880FzBBWlCGZMTNJxeLwW6EVAcxj63O2Dzc6C0h2CTPQkpsvv1Re89PepqqKFeOiaOjPMtaC7zKTT0Zu2MNmo529Do7BAgx5ZSMHis9x3Ig7gDEjPISV36SctZErkHApaNIBvQl4kF3vMEa1ItM8MBkQUliVvdx58Ko0b9U+6tCPZEI/LtZUS4+oajAwCdV+kBc64+uKJXuneHM72+y4m5TbslivO3zPqJGmbfhNdW+10eSMwPMRlVVNCAq3f/Y9UnjhoNiRyMmPqkrcU0QNUFapasBKidzUBBOdHHLh1Yk5T9wmiCNlxkb4DswBvOQHXsub+llV+uesLRYjdBPfekRiFH0UrluXe4uOAqfNUSlaJsnkZlOWLOtkUOpO+A4FqMsWW3SJ6p1+5stQZiLzff9ErlNln9TdNteFXFkSnL8WqiKBosMz6xvoTjrmWRvGg4odcEKGKYCx0Q/hcSpbuDqc+JzB9HQ1X0XiVC9xlAqztUPBu0ltl8WRKVdDGEf7WhgREGwYHBswti37WyGhP4hphoKCWTj1xIa+9smUbG5d6TgeMGruZvXya0P+peifUj7SpQq/0dFQn0B+OucM77Rx4+8hEz0uQ8aOOkuRPwjbldOOyR+BisdrQQVdBEIw=
