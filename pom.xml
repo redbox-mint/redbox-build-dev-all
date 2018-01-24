@@ -222,7 +222,7 @@
         </dependency>
         <!-- MongoDB Storage plugin -->
         <dependency>
-            <groupId>au.com.redboxresearchdata.fascinator</groupId>
+            <groupId>com.googlecode.the-fascinator.plugins</groupId>
             <artifactId>plugin-storage-mongo</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
