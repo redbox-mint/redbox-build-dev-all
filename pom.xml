@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.googlecode.redbox-mint</groupId>
     <artifactId>redbox-distro</artifactId>
-    <version>1.9.0.1-SNAPSHOT</version>
+    <version>1.10</version>
     <packaging>${packaging}</packaging>
     <name>ReDBox - Distribution</name>
     <parent>
@@ -23,7 +22,7 @@
         <server.port>9000</server.port>
         <amq.port>9101</amq.port>
         <amq.stomp.port>9102</amq.stomp.port>
-        <server.url.base/>
+        <server.url.base />
         <mint.proxy.server>http://localhost:9001</mint.proxy.server>
         <mint.amq.broker>tcp://localhost:9201</mint.amq.broker>
         <dir.home>${project.home}/home</dir.home>
@@ -77,7 +76,7 @@
         <dependency>
             <groupId>com.googlecode.the-fascinator.plugins</groupId>
             <artifactId>plugin-storage-blobstore</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.the-fascinator.plugins</groupId>
@@ -224,7 +223,7 @@
         <dependency>
             <groupId>com.googlecode.the-fascinator.plugins</groupId>
             <artifactId>plugin-storage-mongo</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.the-fascinator.plugins</groupId>
@@ -526,7 +525,7 @@
                         </executions>
                         <configuration>
                             <copyright>GPLv2</copyright>
-                            <distribution/>
+                            <distribution />
                             <group>Application/Internet</group>
                             <name>redbox-distro</name>
                             <mappings>
@@ -782,7 +781,7 @@
                         <phase>process-resources</phase>
                         <configuration>
                             <tasks>
-                                <chmod file="${dir.server}/*.sh" perm="740"/>
+                                <chmod file="${dir.server}/*.sh" perm="740" />
                             </tasks>
                         </configuration>
                         <goals>
@@ -837,7 +836,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -850,7 +849,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -863,7 +862,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -876,7 +875,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -889,7 +888,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
