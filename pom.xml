@@ -49,6 +49,11 @@
         </dependency>
         <dependency>
             <groupId>com.googlecode.redbox-mint</groupId>
+            <artifactId>redbox-vital-transformer-fedora3-plus</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.redbox-mint</groupId>
             <artifactId>redbox</artifactId>
             <type>pom</type>
             <version>1.10.1</version>
@@ -88,64 +93,7 @@
             <artifactId>plugin-indexer-solr</artifactId>
             <version>1.4</version>
         </dependency>
-        <dependency>
-            <groupId>com.googlecode.the-fascinator.plugins</groupId>
-            <artifactId>plugin-storage-fedora3</artifactId>
-            <version>1.1.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.sun.xml.stream</groupId>
-                    <artifactId>sjsxp</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.activemq</groupId>
-                    <artifactId>activemq-all</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.fcrepo</groupId>
-                    <artifactId>persistence-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.abdera</groupId>
-                    <artifactId>abdera-i18n</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.ws.commons.axiom</groupId>
-                    <artifactId>axiom-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.ws.commons.axiom</groupId>
-                    <artifactId>axiom-impl</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.collections</groupId>
-                    <artifactId>google-collections</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.hp.hpl.jena</groupId>
-                    <artifactId>iri</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.jersey</groupId>
-                    <artifactId>jersey-bundle</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.the-fascinator.plugins</groupId>
-            <artifactId>plugin-storage-fedora36</artifactId>
-            <version>1.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.activemq</groupId>
-                    <artifactId>activemq-all</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.fcrepo</groupId>
-                    <artifactId>persistence-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+
         <dependency>
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
