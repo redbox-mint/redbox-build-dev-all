@@ -13,7 +13,9 @@
                         "name": "ReDBox"
                     },
                     "smtp": {
-                        "host": "${smtp.host}"
+                    	
+                        "host": "mailhog",
+                        "port": "1025"
                     },
                     "defaults": {
                         "subject": "Notification",

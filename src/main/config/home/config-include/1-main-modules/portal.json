@@ -80,22 +80,18 @@
                 "jsonconfig": "packaging-config.json",
                 "packages-in-package": false
             },
-            "dataset": {
-                "jsonconfig": "dataset.json",
+            "rdmp": {
+                "jsonconfig": "rdmp.json",
                 "packages-in-package": false
-            },
-            "dmpt": {
-                "jsonconfig": "dmpt.json",
+						},
+						"workspace": {
+                "jsonconfig": "workspace.json",
                 "packages-in-package": false
-            },
-            "self-submission": {
-                "jsonconfig": "self-submission.json",
+						},
+        	"dataRecord": {
+                "jsonconfig": "data-record.json",
                 "packages-in-package": false
-            },
-            "simple": {
-                "jsonconfig": "simple.json",
-                "packages-in-package": false
-            }
+						}
         },
         "harvestFiles": "${fascinator.home}/harvest",
         "houseKeeping": {
@@ -128,7 +124,7 @@
         				"configFile": "${fascinator.home}/process/external-curation-status.json",
         				"setId": "",
         				"timing": "0 0/10 * * * ?"
-      				}                
+      				}
 				 ]
             }
         },

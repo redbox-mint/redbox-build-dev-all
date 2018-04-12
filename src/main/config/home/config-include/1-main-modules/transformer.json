@@ -1,55 +1,21 @@
 {
+	"portalUrlBase": "${rbPortalUrlBase}",
+	"portalApiToken": "${rbPortalApiToken}",
 	"transformerDefaults": {
-        "local": {
-            "id": "local",
-            "useIncrements": false
-        },
-        "rifcs": {
-            "id": "scripting",
-            "scriptType": "groovy",
-            "scriptPath": "${fascinator.home}/scripts/tfpackageToRifcs.groovy"
-        },
-        "jsonVelocity": {
-            "id": "jsonVelocity",
-            "sourcePayload": ".tfpackage",
-            "templatesPath": "${fascinator.home}/templates",
-            "templatesPathExclusions": ["rif.vm"]
-        },
-        "jsonVelocityPDF": {
-            "id": "jsonVelocityPDF",
-            "sourcePayload": ".tfpackage",
-            "templatesPath": "${fascinator.home}/pdf-templates",
-            "checkForTFMETAProperty": "true",
-            "TFMETAPropertyName": "generatePDF",
-            "TFMETAPropertyValue": "true",
-            "clearPropertyOnTransform": "true",
-            "versioning": "true"
-        },
-        "dmpToSelfSub": {
-            "id": "jsonVelocity",
-            "sourcePayload": ".tfpackage",
-            "templatesPath": "${fascinator.home}/templates/self-submission/selfSub.vm",
-            "checkForTFMETAProperty": "true",
-            "TFMETAPropertyName": "copyTFPackage",
-            "TFMETAPropertyValue": "dmpToSelfSub",
-            "clearPropertyOnTransform": "true",
-            "transformSource": "true"
-        },
-        "selfSubtoDataset": {
-            "id": "jsonVelocity",
-            "sourcePayload": ".tfpackage",
-            "templatesPath": "${fascinator.home}/templates/selfsub-dataset/selfSubToDataset.vm",
-            "checkForTFMETAProperty": "true",
-            "TFMETAPropertyName": "workflowTransitioned",
-            "TFMETAPropertyValue": "true",
-            "clearPropertyOnTransform": "true",
-            "transformSource": "true"
-        },"basicVersioning": {
-		    "id": "extensionBasicVersioning",
-		    "sourcePayload": ".tfpackage"
-		},"extensionBasicVersioning": {
-		    "id": "extensionBasicVersioning",
-		    "sourcePayload": ".tfpackage.parked"
+		"contributorPermissions": {
+			"id": "contributorPermissions",
+			"emailProperty": "email",
+			"editContributorProperties": [
+				"metadata.contributor_ci",
+				"metadata.contributor_data_manager",
+				"dataowner_email"
+			],
+			"viewContributorProperties": [
+				"metadata.contributor_ci",
+				"metadata.contributor_data_manager",
+				"metadata.contributor_supervisor",
+				"metadata.contributors"
+			]
 		}
-    }
+	}
 }
