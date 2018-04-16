@@ -5,7 +5,7 @@ services:
 before_install:
 - mkdir -p /tmp/build $HOME/.m2
 - docker pull qcifengineering/redbox-builder
-- docker run -v /tmp/build:/build -v $HOME/.m2:/m2_repo -e "--branch=2.x CLONEPATH=https://github.com/redbox-mint/redbox-build-distro.git" qcifengineering/redbox-builder /bin/bash -c "echo '0.0.0.0 static.appfuse.org' >> /etc/hosts; cd build;git clone https://github.com/redbox-mint/redbox-build-distro.git src; cd src; mvn -Dmaven.repo.local=/m2_repo clean package"
+- docker run -v /tmp/build:/build -v $HOME/.m2:/m2_repo -e "--branch=2.x CLONEPATH=https://github.com/redbox-mint/redbox-build-distro.git" qcifengineering/redbox-builder /bin/bash -c "echo '0.0.0.0 static.appfuse.org' >> /etc/hosts; cd build;git clone --branch=2.x https://github.com/redbox-mint/redbox-build-distro.git src; cd src; mvn -Dmaven.repo.local=/m2_repo clean package"
 cache:
   directories:
   - $HOME/.m2
