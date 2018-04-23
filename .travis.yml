@@ -11,7 +11,7 @@ before_install:
   /etc/hosts; cd build;git clone --branch=2.x https://github.com/redbox-mint/redbox-build-distro.git
   src; cd src; mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
   --settings /apache-maven-2.2.1/conf/settings.xml -Dmaven.repo.local=/m2_repo -DskipTests=true
-  -Pbuild-package-data package deploy | grep -v 'CHECKSUM.*'| grep -v 'downloaded.*'
+  -Pbuild-package clean package deploy | grep -v 'CHECKSUM.*'| grep -v 'downloaded.*'
   | grep -v 'Copying.*'| grep -v '\[INFO\].*';"
 cache:
   directories:
