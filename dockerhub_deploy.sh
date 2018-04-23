@@ -1,6 +1,7 @@
 #! /bin/bash
 cd support/docker/
-find ../../target -name 'redbox-distro-*-build.tar.gz' | xargs -I % cp % ./redbox.tar.gz
+docker cp $(docker ps -l -q):/build/src/target ./
+find ./target -name 'redbox-distro-*-build.tar.gz' | xargs -I % cp % ./redbox.tar.gz
 docker login -u $DOCKER_USER -p $DOCKER_PASS
 export REPO=qcifengineering/redbox
 export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
