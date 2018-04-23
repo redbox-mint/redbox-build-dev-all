@@ -6,7 +6,7 @@ before_install:
 - mkdir -p /tmp/build $HOME/.m2
 - docker pull qcifengineering/redbox-builder
 - docker run -v /tmp/build:/build -v $HOME/.m2:/m2_repo -e "--branch=2.x CLONEPATH=https://github.com/redbox-mint/redbox-build-distro.git" -e "SONATYPE_USERNAME=$SONATYPE_USERNAME" -e "SONATYPE_PASSWORD=$SONATYPE_PASSWORD"
-  qcifengineering/redbox-builder /bin/bash -c "-c "echo '0.0.0.0 static.appfuse.org' >> /etc/hosts; cd build;git clone --branch=2.x https://github.com/redbox-mint/redbox-build-distro.git src; cd src; mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn --settings /apache-maven-2.2.1/conf/settings.xml
+  qcifengineering/redbox-builder /bin/bash -c "echo '0.0.0.0 static.appfuse.org' >> /etc/hosts; cd build;git clone --branch=2.x https://github.com/redbox-mint/redbox-build-distro.git src; cd src; mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn --settings /apache-maven-2.2.1/conf/settings.xml
   -Dmaven.repo.local=/m2_repo -DskipTests=true -Pbuild-package-data deploy | grep -v 'CHECKSUM.*'| grep -v 'downloaded.*' | grep -v 'Copying.*'| grep -v '\[INFO\].*';"
 cache:
   directories:
