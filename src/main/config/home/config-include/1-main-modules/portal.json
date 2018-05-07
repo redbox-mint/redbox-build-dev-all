@@ -91,6 +91,10 @@
         	"dataRecord": {
                 "jsonconfig": "data-record.json",
                 "packages-in-package": false
+						},
+			"dataPublication": {
+                "jsonconfig": "data-publication.json",
+                "packages-in-package": false
 						}
         },
         "harvestFiles": "${fascinator.home}/harvest",
