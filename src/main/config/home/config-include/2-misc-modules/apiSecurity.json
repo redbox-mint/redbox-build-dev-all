@@ -1,5 +1,5 @@
 {
   "api": {
-    "apiKeyFile": "${fascinator.data}/security/apiKeys.json"
+    "apiKeyFile": "${project.data}/security/apiKeys.json"
   }
 }
