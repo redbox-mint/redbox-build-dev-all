@@ -17,11 +17,11 @@
             "namespace": "uuid"
         },
         "mongo": {
-            "host": "mongodb",
+            "host": "localhost",
             "db": "redbox",
             "port": 27017,
             "payload_backend": "MONGO"
         }
-        
+
     }
 }
