@@ -1,0 +1,27 @@
+{
+    "storage": {
+        "type": "mongodb-storage",
+        "file-system": {
+            "home": "${storage.home}"
+        },
+        "blobstore": {
+            "provider": "filesystem",
+            "containerName": "redbox",
+            "fileSystemLocation": "${storage.home}",
+            "supportsUserMetadata": "false"
+        },
+        "fedora3": {
+            "url": "http://localhost:8080/fedora",
+            "username": "fedoraAdmin",
+            "password": "fedoraAdmin",
+            "namespace": "uuid"
+        },
+        "mongo": {
+            "host": "${mongodb.host}",
+            "db": "${mongodb.db}",
+            "port": 27017,
+            "payload_backend": "MONGO"
+        }
+
+    }
+}

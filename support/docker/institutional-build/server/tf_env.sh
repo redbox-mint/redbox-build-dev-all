@@ -22,6 +22,14 @@ if [ -z "$REDBOX_VERSION" ]; then
 fi
 export FASCINATOR_HOME="$TF_HOME"
 
+if [ -z "$MONGO_HOST" ]; then
+	export MONGO_HOST="mongodb"
+fi
+
+if [ -z "$MONGO_DB" ]; then
+export MONGO_DB="redbox"
+fi
+
 # java class path
 export CLASSPATH="plugins/*:lib/*"
 
@@ -70,7 +78,7 @@ CONFIG_DIRS="-Dproject.home=$PROJECT_HOME -Dproject.data=$PROJECT_HOME/data -Dfa
 MINT_OPTS="-Dmint.proxy.server=$MINT_SERVER -Dmint.proxy.url=$MINT_SERVER/mint -Dmint.amq.broker=$MINT_AMQ"
 
 # additional settings
-EXTRA_OPTS="-Dserver.url.base=$SERVER_URL -Damq.port=$AMQ_PORT -Damq.stomp.port=$AMQ_STOMP_PORT -Dsmtp.host=$SMTP_HOST -Dadmin.email=$ADMIN_EMAIL -Dredbox.version=$REDBOX_VERSION"
+EXTRA_OPTS="-Dserver.url.base=$SERVER_URL -Damq.port=$AMQ_PORT -Damq.stomp.port=$AMQ_STOMP_PORT -Dsmtp.host=$SMTP_HOST -Dadmin.email=$ADMIN_EMAIL -Dredbox.version=$REDBOX_VERSION -Dmongodb.host=$MONGO_HOST -Dmongodb.db=$MONGO_DB"
 
 # Logging fix. Axis 1.4 (for Fedora) needs to know about the SLF4J Implementation
 COMMONS_LOGGING="-Dorg.apache.commons.logging.LogFactory=org.apache.commons.logging.impl.SLF4JLogFactory -Dorg.restlet.engine.loggerFacadeClass=org.restlet.ext.slf4j.Slf4jLoggerFacade"
