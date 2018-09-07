@@ -1,5 +1,6 @@
 {
     "owasp": {
-        "httponly": true
+        "httponly": true,
+        "whitelist": ["vivo:Dataset.dc:extent"]
     }
 }
