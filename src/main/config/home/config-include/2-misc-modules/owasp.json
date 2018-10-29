@@ -1,6 +1,6 @@
 {
     "owasp": {
         "httponly": true,
-        "whitelist": ["vivo:Dataset.dc:extent", "vivo:Dataset.dc:extent.prefLabel"]
+        "whitelist": ["vivo:Dataset.dc:extent", "vivo:Dataset.dc:extent.prefLabel", "locrel:rth.foaf:Person.foaf:email", "swrc:supervisor.foaf:Person.foaf:email", "locrel:clb.foaf:Person.1.person.foaf:email"]
     }
 }
