@@ -71,7 +71,7 @@ $(function() {
                 packageType: "dmpt",
                 metaList: ["title", "dc:description", "redbox:newForm", "redbox:formVersion"],
                 title: "[Untitled]",
-                description: "",
+                "dc:description": "",
                 "redbox:newForm": "true",
                 "redbox:formVersion": "$systemConfig.getString("", "redbox.version.string")"
             },
