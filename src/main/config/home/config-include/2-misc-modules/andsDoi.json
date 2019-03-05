@@ -1,7 +1,8 @@
 {
 	"andsDoi": {
         "apiKey": "TESTd652186962d02890e3a6f0caa3b19e177dd29ccc",
-        "apiBaseUrl": "https://services.ands.org.au/doi/1.1/",
+        "apiBaseUrl": "https://researchdata.ands.org.au/api/doi",
+        "sharedSecret": "Au",
         "doiProperty": "andsDoi",
         "security": {
             "users": [],
