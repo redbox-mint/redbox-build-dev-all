@@ -852,7 +852,7 @@
             <id>fascinator-snapshots</id>
             <url>http://dev.redboxresearchdata.com.au/nexus/content/repositories/central-snapshots/</url>
             <releases>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </releases>
             <snapshots>
                 <enabled>true</enabled>
@@ -864,9 +864,9 @@
         </repository>
     </repositories>
     <scm>
-        <url>scm:git://github.com/redbox-mint/redbox-build-distro.git</url>
-        <connection>scm:git://github.com/redbox-mint/redbox-build-distro.git</connection>
-        <developerConnection>scm:git:https://github.com/redbox-mint/redbox-build-distro.git</developerConnection>
+        <url>https://github.com/redbox-mint/redbox-build-distro.git</url>
+        <connection>scm:git:git@github.com:redbox-mint/redbox-build-distro.git</connection>
+        <developerConnection>scm:git:git@github.com:redbox-mint/redbox-build-distro.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
