@@ -30,6 +30,7 @@ fi
 
 # configure environment
 envsubst < /opt/redbox/apikeys.json.template > /opt/redbox/data/security/apiKeys.json
+envsubst < /opt/redbox/apikeys.json.template > /opt/redbox/home/apiKeys.json
 . $PROG_DIR/tf_env.sh
 
 # perform action
