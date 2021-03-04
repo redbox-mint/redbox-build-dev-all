@@ -18,7 +18,7 @@ if [ -z "$TF_HOME" ]; then
 	export TF_HOME="$PROJECT_HOME/home"
 fi
 if [ -z "$REDBOX_VERSION" ]; then
-	export REDBOX_VERSION="1.10.1-SNAPSHOT"
+	export REDBOX_VERSION="1.10.2-SNAPSHOT"
 fi
 export FASCINATOR_HOME="$TF_HOME"
 
