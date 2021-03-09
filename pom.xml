@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.googlecode.redbox-mint</groupId>
     <artifactId>redbox-distro</artifactId>
-    <version>1.10.2-SNAPSHOT</version>
+    <version>1.10.2</version>
     <packaging>${packaging}</packaging>
     <name>ReDBox - Distribution</name>
     <parent>
@@ -196,7 +196,7 @@
         <dependency>
             <groupId>com.googlecode.the-fascinator</groupId>
             <artifactId>fascinator-common</artifactId>
-			<version>1.7-SNAPSHOT</version>
+			<version>1.7</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.redbox-mint</groupId>
@@ -206,7 +206,7 @@
         <dependency>
             <groupId>com.googlecode.the-fascinator</groupId>
             <artifactId>fascinator-portal</artifactId>
-            <version>1.7-SNAPSHOT</version>
+            <version>1.7</version>
             <classifier>classes</classifier>
             <exclusions>
                 <exclusion>
@@ -264,7 +264,7 @@
             <groupId>com.googlecode.the-fascinator</groupId>
             <artifactId>fascinator-portal</artifactId>
             <type>warpath</type>
-            <version>1.7-SNAPSHOT</version>
+            <version>1.7</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.sun.jersey</groupId>
